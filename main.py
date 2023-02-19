@@ -22,7 +22,7 @@ app = FastAPI()
 #     return {"user": pk, "item": item}
 
 
-@app.post("/book")
+@app.post("/book", response_model=Book, response_model_exclude_unset=True)
 def create_book(item: Book, author: Author, quantity: int = Body(...)):
     return {"item": item, "author": author, "quantity": quantity}
 
